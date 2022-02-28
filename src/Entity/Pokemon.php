@@ -36,6 +36,9 @@ class Pokemon
     private $type;
 
     #[ORM\ManyToOne(targetEntity: Label::class, inversedBy: 'categoryPokemon')]
+    /**
+         * @Groups("category:read")
+         * */
     private $category;
 
     public function getId(): ?int
