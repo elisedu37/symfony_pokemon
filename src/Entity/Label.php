@@ -6,6 +6,7 @@ use App\Repository\LabelRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: LabelRepository::class)]
 class Label
@@ -13,9 +14,15 @@ class Label
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+        /**
+         * @Groups("category:read")
+         * */
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
+    /**
+         * @Groups("category:read")
+         * */
     private $type;
 
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Pokemon::class)]
